@@ -17,11 +17,10 @@
             }
         }
     ],
-    "redirects": [
+    "rewrites": [
         {
-            "source": "/media",
-            "destination": "/media",
-            "statusCode": 301
+            "source": "/media/(.*)",
+            "destination": "/media/$1"
         }
     ],
     "routes": [
