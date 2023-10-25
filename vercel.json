@@ -17,14 +17,35 @@
             }
         }
     ],
+    "images": {
+        "sizes": [
+            256,
+            640,
+            1080,
+            2048,
+            3840
+        ],
+        "remotePatterns": [
+            {
+                "protocol": "https",
+                "hostname": "api-mwtracks.vercel.app",
+                "port": "",
+                "pathname": "/media/**"
+            }
+        ],
+        "minimumCacheTTL": 60
+    },
+    "redirects": [
+        {
+            "source": "/media",
+            "destination": "/media",
+            "statusCode": 301
+        }
+    ],
     "routes": [
         {
             "src": "/static/(.*)",
             "dest": "/static/$1"
-        },
-        {
-            "src": "/media/(.*)",
-            "dest": "/media/$1"
         },
         {
             "src": "/(.*)",
