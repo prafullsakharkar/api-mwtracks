@@ -2,10 +2,11 @@ import datetime
 import os
 from uuid import uuid4
 
-from apis.utilities.models import FileUpload, Status
 from django.conf import settings
 from django.core.validators import RegexValidator
 from django.db import models
+
+from apis.utilities.models import FileUpload, Status
 
 User = settings.AUTH_USER_MODEL
 
@@ -168,7 +169,7 @@ class Step(BaseFields):
     entity_type = models.CharField(max_length=20, default="Step")
     status = models.ForeignKey(to=Status, null=True, on_delete=models.SET_NULL)
     start_date = models.DateTimeField(auto_now_add=True, null=True)
-    end_date = models.DateTimeField(blank=True, null=True, default=datetime.datetime.now())
+    end_date = models.DateTimeField(null=True, default=datetime.datetime.now())
     duration = models.IntegerField(default=0)
     retakes = models.PositiveSmallIntegerField(default=0)
 
@@ -312,7 +313,7 @@ class Note(models.Model):
     entity_type = models.CharField(max_length=20, default="Note")
     attachments = models.ManyToManyField(to=FileUpload, blank=True, default=[])
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True, default=datetime.datetime.now())
+    updated_at = models.DateTimeField(auto_now=True, null=True)
     created_by = models.ForeignKey(
         to=User, related_name="note_created_by", null=True, on_delete=models.SET_NULL
     )
@@ -344,7 +345,7 @@ class Reply(models.Model):
     note = models.ForeignKey(to=Note, null=True, on_delete=models.CASCADE)
     project = models.ForeignKey(to=Project, null=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True, default=datetime.datetime.now())
+    updated_at = models.DateTimeField(auto_now=True, null=True)
     created_by = models.ForeignKey(
         to=User, related_name="reply_created_by", null=True, on_delete=models.SET_NULL
     )
