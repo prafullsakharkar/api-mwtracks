@@ -44,10 +44,7 @@ class Project(BaseFields):
     entity_type = models.CharField(max_length=20, default="Project")
     duration = models.IntegerField(default=1)
     due_date = models.DateField(null=True)
-    resolution = models.CharField(
-        max_length=9,
-        validators=[RegexValidator("^\d{1,4}X\d{1,4}$", "Enter valid resolution")],
-    )
+    resolution = models.CharField(max_length=9, default="1920X1020")
     start_frame = models.IntegerField(default=101)
     fps = models.FloatField(default=24.0)
     is_episodic = models.BooleanField(default=True)
