@@ -219,6 +219,7 @@ CORS_ORIGIN_ALLOW_ALL = (
     True  # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 )
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "api-mwtracks.onrender.com").split(",")
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_AUTH_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("GOOGLE_AUTH_SECRET_KEY")
