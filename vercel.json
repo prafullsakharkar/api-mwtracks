@@ -17,12 +17,6 @@
             }
         }
     ],
-    "redirects": [
-        {
-            "source": "/media/(.*)",
-            "destination": "/media/$1"
-        }
-    ],
     "routes": [
         {
             "src": "/static/(.*)",
