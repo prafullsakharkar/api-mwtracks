@@ -219,7 +219,8 @@ AUTH_COOKIE_SAMESITE = "None"
 # CORS_ALLOWED_WHITELIST = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:8000").split(",")
 
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:8000").split(",")
 
