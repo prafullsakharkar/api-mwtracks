@@ -20,12 +20,24 @@ class StatusView(ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = {"id": ["in", "exact"], "name": ["exact"]}
 
+    def get_serializer(self, *args, **kwargs):
+        if isinstance(kwargs.get("data", {}), list):
+            kwargs["many"] = True
+
+        return super(StatusView, self).get_serializer(*args, **kwargs)
+
 
 class UtilStepView(ModelViewSet):
     queryset = UtilStep.objects.all()
     serializer_class = UtilStepSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = {"id": ["in", "exact"], "entity": ["exact"]}
+
+    def get_serializer(self, *args, **kwargs):
+        if isinstance(kwargs.get("data", {}), list):
+            kwargs["many"] = True
+
+        return super(UtilStepView, self).get_serializer(*args, **kwargs)
 
 
 class FileUploadView(ModelViewSet):

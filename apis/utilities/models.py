@@ -7,7 +7,7 @@ from django.db import models
 
 class Status(models.Model):
     name = models.CharField(max_length=100, default="", null=False, blank=False, unique=True)
-    color = models.CharField(max_length=100, default="#FFFFFF", unique=True)
+    color = models.CharField(max_length=100, default="#ffffff", unique=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     REQUIRED_FIELDS = ["name"]
@@ -21,6 +21,7 @@ class UtilStep(models.Model):
 
     name = models.CharField(max_length=30, default="", null=False, blank=False, unique=True)
     entity = models.CharField(max_length=20, default="", choices=ENTITY_CHOICES)
+    short_name = models.CharField(max_length=20, default="", null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     REQUIRED_FIELDS = ["name"]
