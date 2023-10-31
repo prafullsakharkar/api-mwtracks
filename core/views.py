@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.conf import settings
 from djoser.social.views import ProviderAuthView
 from rest_framework import status
@@ -8,6 +9,10 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
+
+
+def index(request):
+    return render(request, "index.html")
 
 
 class CustomProviderAuthView(ProviderAuthView):
